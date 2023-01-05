@@ -46,7 +46,6 @@ while game_is_on:
     for segment in snake.segments[2:]:
         if snake.head.distance(segment) < 1:
             game_is_on = False
-            screen.update()
             scoreboard.game_over()
 
 
