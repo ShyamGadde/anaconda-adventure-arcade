@@ -1,12 +1,14 @@
+# pylint: disable=missing-docstring
+
 from turtle import Screen
+
+import time
 
 from snake import Snake, SNAKE_IMG
 
 from food import Food
 
 from scoreboard import Scoreboard
-
-import time
 
 
 screen = Screen()
@@ -26,9 +28,9 @@ screen.onkey(snake.left, "Left")
 screen.onkey(snake.right, "Right")
 
 
-game_is_on = True
+GAME_IS_ON = True
 
-while game_is_on:
+while GAME_IS_ON:
     screen.update()
     time.sleep(0.1)
     snake.move()
@@ -38,14 +40,19 @@ while game_is_on:
         snake.extend()
         scoreboard.increase_score()
 
-    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
-        game_is_on = False
+    if (
+        snake.head.xcor() > 280
+        or snake.head.xcor() < -280
+        or snake.head.ycor() > 280
+        or snake.head.ycor() < -280
+    ):
+        GAME_IS_ON = False
         screen.update()
         scoreboard.game_over()
 
     for segment in snake.segments[2:]:
         if snake.head.distance(segment) < 1:
-            game_is_on = False
+            GAME_IS_ON = False
             scoreboard.game_over()
 
 
