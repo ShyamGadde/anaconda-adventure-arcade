@@ -1,15 +1,11 @@
 # pylint: disable=missing-docstring
 
+import time
 from turtle import Screen
 
-import time
-
-from snake import Snake, SNAKE_IMG
-
 from food import Food
-
 from scoreboard import Scoreboard
-
+from snake import SNAKE_IMG, Snake
 
 screen = Screen()
 screen.setup(width=600, height=600)
